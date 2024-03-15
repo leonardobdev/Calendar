@@ -1,0 +1,53 @@
+<html>
+<head>
+</head>
+<body>
+<div class='calendar'></div>
+<script>
+let cs = document.querySelectorAll('.calendar');
+if (cs) {
+for (let c of cs) {
+let ms = [31,28,31,30,31,30,31,31,30,31,30,31];
+let ws = ['D','S','T','Q','Q','S','S'];
+let date = new Date();
+let m = date.getMonth();
+let y = date.getFullYear();
+let wd = date.getDay();
+let d = date.getDate();
+let wdi = wd;
+let n = 0;
+let b = (m == 2 && y % 4 == 0) ? 1 : 0;
+let t = '';
+for (let di = d; di > 0; di--) {
+wdi += wdi > 0 ? -1 : 6;
+}
+n = -wdi;
+t += '<table>';
+t += '<tr>';
+for (let w = 0; w < 7; w++) {
+t += '<th>';
+t += ws[w]
+t += '</th>';
+}
+t += '</tr>';
+for (let r = 1; r <= 7; r++) {
+t += '<tr>';
+for (let c = 1; c <= 7; c++) {
+t += '<td>';
+if (n > 0 && n <= ms[m]) {
+t += n == d ? '<strong>' : '';
+t += (n < 10 ? '0' : '') + n;
+t += n == d ? '</strong>' : '';
+}
+t += '</td>';
+n++;
+}
+t += '</tr>';
+}
+t += '</table>';
+c.innerHTML = t;
+}
+}
+</script>
+</body>
+</html>
