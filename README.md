@@ -1,3 +1,3 @@
 # Calendar
 
-https://leonardobdev.github.io/calendar/
+https://leonardobdev.github.io/Calendar/
